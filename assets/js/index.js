@@ -70,13 +70,16 @@ window.addEventListener('load', async () => {
         
 
 
-        const filteredMovies = movies.filter(movie => {
+        let filteredMovies = movies.filter(movie => {
             const hasSelectedCategories = selected_categories.some(category => movie.categories.includes(category));
             const hasExcludedCategories = excluded_categories.some(category => movie.categories.includes(category));
             
             return hasSelectedCategories && !hasExcludedCategories;
         });
-
+        
+        if (filteredMovies.length == 0) {
+            filteredMovies = movies;
+        }
 
 
         updateMovieList(filteredMovies);
@@ -86,6 +89,9 @@ window.addEventListener('load', async () => {
     });
 
     function updateMovieList(filteredMovies) {
+
+
+
         const movieList = document.getElementById('movies'); // Keeping 'movies' as the element id
         const movieHTML = filteredMovies.map(element =>
             `<div class="col-md-3">
