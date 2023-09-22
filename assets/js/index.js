@@ -8,6 +8,8 @@ window.addEventListener('load', async () => {
         const data = await response.json();
         movies = data.items;
 
+        movies = sortMoviesAlphabetically(movies);
+
         // Populate categories array with all unique categories
         movies.forEach(element => {
             element.categories.forEach(category => {
@@ -37,7 +39,6 @@ window.addEventListener('load', async () => {
     } catch(err) {
         console.log(err);
     }
-     
     
     $(".checkbox-dropdown").click(function () {
         $(this).toggleClass("is-active");
@@ -46,6 +47,7 @@ window.addEventListener('load', async () => {
     $(".checkbox-dropdown ul").click(function(e) {
         e.stopPropagation();
     });
+    
     
     $(".filter").click(function () {
         i = document.getElementsByClassName('checkbox-dropdown-list')[0].children;
@@ -70,16 +72,13 @@ window.addEventListener('load', async () => {
         
 
 
-        let filteredMovies = movies.filter(movie => {
+        const filteredMovies = movies.filter(movie => {
             const hasSelectedCategories = selected_categories.some(category => movie.categories.includes(category));
             const hasExcludedCategories = excluded_categories.some(category => movie.categories.includes(category));
             
             return hasSelectedCategories && !hasExcludedCategories;
         });
-        
-        if (filteredMovies.length == 0) {
-            filteredMovies = movies;
-        }
+
 
 
         updateMovieList(filteredMovies);
@@ -88,10 +87,18 @@ window.addEventListener('load', async () => {
 
     });
 
+    document.getElementById('alphabetical').addEventListener('click', () => {
+        const sortedMovies = sortMoviesAlphabetically(movies);
+        updateMovieList(sortedMovies);
+    });
+    
+    document.getElementById('release-date').addEventListener('click', () => {
+        const sortedMovies = sortMoviesByReleaseDate(movies);
+        updateMovieList(sortedMovies);
+    });
+
+
     function updateMovieList(filteredMovies) {
-
-
-
         const movieList = document.getElementById('movies'); // Keeping 'movies' as the element id
         const movieHTML = filteredMovies.map(element =>
             `<div class="col-md-3">
@@ -104,6 +111,18 @@ window.addEventListener('load', async () => {
 
         movieList.innerHTML = movieHTML.join('');
     }
+
+    // sort alphabetically by default
+    function sortMoviesAlphabetically(movies) {
+        return movies.sort((a, b) => {
+            const titleA = a.title.toLowerCase();
+            const titleB = b.title.toLowerCase();
+            if (titleA < titleB) return -1;
+            if (titleA > titleB) return 1;
+            return 0
+        });
+    }
+    updateMovieList(sortMoviesAlphabetically(movies));
 
     $('.search').keyup(function() {
         const search = $(this).val().toLowerCase();
