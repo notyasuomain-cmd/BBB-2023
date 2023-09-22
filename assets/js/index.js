@@ -87,15 +87,6 @@ window.addEventListener('load', async () => {
 
     });
 
-    document.getElementById('alphabetical').addEventListener('click', () => {
-        const sortedMovies = sortMoviesAlphabetically(movies);
-        updateMovieList(sortedMovies);
-    });
-    
-    document.getElementById('release-date').addEventListener('click', () => {
-        const sortedMovies = sortMoviesByReleaseDate(movies);
-        updateMovieList(sortedMovies);
-    });
 
 
     function updateMovieList(filteredMovies) {
