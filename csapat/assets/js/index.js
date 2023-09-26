@@ -1,4 +1,15 @@
+
+
 window.addEventListener('load', async () => {
+    const en = "Én bemutatzkaozas";
+    const te = "Te bemutatzkaozas";
+    const o = "o mejavsv"
+    $(".enb").html(en);
+    $(".teb").html(te);
+    $(".ob").html(o);
+
+
+
     let i = 1;
 
     startTime();
@@ -19,6 +30,16 @@ window.addEventListener('load', async () => {
 
 
     })
+
+    $('.en').click(() => {
+        $(".enb").toggleClass("asd");
+    });
+    $('.te').click(() => {
+        $(".teb").toggleClass("asd");
+    });
+    $('.o').click(() => {
+        $(".ob").toggleClass("asd");
+    });
 
 });
 
