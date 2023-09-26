@@ -65,7 +65,7 @@ ul, li {
 
 .checkbox-dropdown.is-active:after {
   border-bottom-color: #000;
-  border-top-color: #fff;
+  border-top-color: transparent;
   margin-top: -9px;
 }
 
