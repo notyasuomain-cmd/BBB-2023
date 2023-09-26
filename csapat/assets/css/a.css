@@ -55,3 +55,35 @@
   border-radius: 50%;
 }
 
+#clock {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 5px;
+  color: var(--bs-primary);
+}
+
+
+.horizontal-flex-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  background: transparent;
+  margin: 5px;
+}
+
+.center {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.asd {
+  opacity: 0;
+  display: none;
+}
+.kozep {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  background: transparent;
+  margin: 5px;
+}
