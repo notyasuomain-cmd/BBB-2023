@@ -10,14 +10,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md" style="background-color: #4164cd;">
-        <div class="container-fluid"><a class="navbar-brand" href="#">Brand</a><button class="navbar-toggler" data-bs-toggle="collapse"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><input class="search" type="search"><button class="btn btn-primary filter" type="button">Button</button>
-            <div class="d-xl-flex align-items-xl-center checkbox-dropdown">
-                <div class="dropdown-title"><span>Choose asd</span></div>
+    <nav class="navbar sticky-top " style="background-color: #4164cd;">
+        <div class="container-fluid">
+            <input class="search" type="search">
+            <button class="btn btn-primary filter" type="button">Apply filters</button>
+            <div class="checkbox-dropdown" type="button">
+                <div class="dropdown-title"><span>Included genres</span></div>
                 <ul class="checkbox-dropdown-list"></ul>
             </div>
-            <div class="checkbox-dropdown">
-                <div class="dropdown-title"><span>Choose qwe</span></div>
+            <div class="checkbox-dropdown" type="button">
+                <div class="dropdown-title"><span>Excluded genres</span></div>
                 <ul class="checkbox-dropdown-list"></ul>
             </div>
         </div>
