@@ -6,6 +6,7 @@ ul, li {
   list-style: none;
   border: none;
   background: none;
+
 }
 
 /* Style the checkbox-dropdown container */
@@ -139,4 +140,8 @@ h1 {
 }
 .pipa {
   margin-right: 10px;
+}
+
+.search {
+  margin: 10px;
 }

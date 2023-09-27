@@ -1,9 +1,10 @@
 
 
 window.addEventListener('load', async () => {
-    const en = "Én bemutatzkaozas";
-    const te = "Te bemutatzkaozas";
-    const o = "o mejavsv"
+    const en = "16 éves tanuló vagyok a Dunakeszi Radnóti Mikós Gimnáziumban. Legjobban az informatika, matematika és fizika foglalkoztat. Szabadidőmben sportolok, és számítógépezek.";
+    const te = "Neszmélyi Balázs vagyok 16 éves gimnazista, és az informatika az egyik legnagyobb szenvedélyem. Imádom felfedezni a számítógépek és a programozás világát, és gyakran foglalkozom saját projektekkel is. A gimnáziumban is aktívan részt veszek az informatikaórákon, és szeretném a jövőben ezen a területen tanulmányaimat folytatni. Amellett, hogy az informatika iránt érdeklődöm, szeretek sportolni és olvasni is, és mindig nyitott vagyok új kihívásokra és tapasztalatokra.";
+    const o = "Lajos Leondardó vagyok, a Puskás Tivadar Technikumba járok és kedvelem a programozást. A szabadidőmben szívesen számítógépezek, és a barátaimmal töltöm az időmet."
+    let a;
     $(".enb").html(en);
     $(".teb").html(te);
     $(".ob").html(o);
@@ -24,24 +25,68 @@ window.addEventListener('load', async () => {
         
         
         i++;
-        if(i === 3) {
+        if(i === 6) {
             i = 1;
         }
-
-
     })
 
+
     $('.en').click(() => {
-        $(".enb").toggleClass("asd");
-    });
-    $('.te').click(() => {
-        $(".teb").toggleClass("asd");
-    });
-    $('.o').click(() => {
-        $(".ob").toggleClass("asd");
+        if(compare(a, "en")) {
+            //eltunik a beumatjkozas
+            $('.bemutatkozas').addClass("asd");a
+            a = null;
+        } else {
+            $('.bemutatkozas').removeClass("asd");
+
+            a = "en";
+            $('.bemutatkozas').html(en);
+        
+        }
+
     });
 
+    $('.te').click(() => {
+        if(compare(a, "te")) {
+            //eltunik a beumatjkozas
+            $('.bemutatkozas').addClass("asd");
+            a = null;
+
+
+        } else {
+            $('.bemutatkozas').removeClass("asd");
+
+            a = "te";
+            $('.bemutatkozas').html(te);
+        
+        }
+    });
+
+    $('.o').click(() => {
+        if(compare(a, "o")) {
+            //eltunik a beumatjkozas
+            $('.bemutatkozas').addClass("asd");
+            a = null;
+
+            
+
+        } else {
+            $('.bemutatkozas').removeClass("asd");
+
+            a = "o";
+            $('.bemutatkozas').html(o);
+        
+        }
+    });
 });
+
+function compare(a,b) {
+    if (a === b) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
 function startTime() {
@@ -56,6 +101,7 @@ function startTime() {
 }
 
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    //format number to 2 digits
+    if (i < 10) {i = "0" + i}; 
     return i;
 }
