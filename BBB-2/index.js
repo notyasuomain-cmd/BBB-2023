@@ -5,6 +5,7 @@ var tt = new Array(nrow);
 var figure_cell_list = [];
 
 // TODO: a sakk babuk szerintem nem annyira vannak kozepen mint ahogy kene
+// TODO: leszarom
 
 // add black pieces to row 0
 figure_cell_list.push([0, 0, '/BBB-2/pieces/br.png']);
@@ -79,6 +80,7 @@ function clearBackground() {
     for (var i = 0; i < nrow; i++) {
         for (var j = 0; j < ncell; j++) {
             // cell color
+            
             if ((i + j) % 2 === 0) {
                 tt[i][j].style.background = "#ffffff"; // white
             } else {
@@ -92,8 +94,39 @@ function cellClicked(obj) {
     clearBackground();
     var row = parseInt(obj.id / ncell);
     var column = obj.id % ncell;
+
+    // get clicked piece
+    var figure = obj.querySelector("img").src;
+    var figure_name = figure.split("/").pop().split(".")[0];
+
+    // get possible moves
+    var possible_moves = [];
+    if (figure_name === "bp") {
+        possible_moves.push([row + 1, column]);
+        possible_moves.push([row + 2, column]);
+    } else if (figure_name === "wp") {
+        possible_moves.push([row - 1, column]);
+        possible_moves.push([row - 2, column]);
+    }
+
+    // draw possible moves
+    for (var i = 0; i < possible_moves.length; i++) {
+        var trow = possible_moves[i][0];
+        var tcol = possible_moves[i][1];
+        if (trow < 0 || trow > 11 || tcol < 0 || tcol > 7) {
+            continue;
+        }
+        tt[trow][tcol].style.background = "#ff0000"; // red background for possible moves
+    }
+
+
+
     tt[row][column].style.background = "#00ff00"; // green background for selected cell
+    console.log(figure_name)
 }
+    
+
+
 
 // call init function when it is loaded
 window.onload = init;
